@@ -1,0 +1,148 @@
+/* About Page Styles */
+
+/* Story Section */
+.story-section {
+    padding: 120px 2rem 4rem;
+    background: var(--light-gray);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.story-content {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 4rem;
+    margin-top: 2rem;
+}
+
+.story-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.story-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Programs Section */
+.programs-section {
+    padding: 4rem 2rem;
+    background: var(--white);
+}
+
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.program-item {
+    text-align: center;
+    padding: 2rem;
+    background: var(--light-gray);
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.program-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.program-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.program-item h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* Directors Section */
+.directors-section {
+    padding: 4rem 2rem;
+    background: var(--light-gray);
+}
+
+.directors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.director-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.director-images {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.director-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s ease;
+}
+
+.passport-photo, .casual-photo {
+    opacity: 0;
+}
+
+.director-card:hover .professional-photo {
+    opacity: 0;
+}
+
+.director-card:hover .passport-photo {
+    opacity: 1;
+}
+
+.director-info {
+    padding: 1.5rem;
+}
+
+.director-title {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.director-bio {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .story-content {
+        grid-template-columns: 1fr;
+    }
+
+    .programs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .story-image {
+        order: -1;
+    }
+
+    .director-images {
+        height: 250px;
+    }
+} 

@@ -1,0 +1,4 @@
+mkdir -p monique-richards-foundation/{assets/{images,css,js},pages,components}
+cd monique-richards-foundation
+mkdir assets css js components pages
+touch index.html style.css script.js 

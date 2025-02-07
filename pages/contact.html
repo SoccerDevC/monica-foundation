@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - My Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../styles/header.css">
+    <script src="../scripts/header.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-code-here.js" crossorigin="anonymous"></script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50">
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="/">
+                    <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#2C5282"/>
+                                <stop offset="100%" style="stop-color:#ED8936"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Decorative Element -->
+                        <path d="M20 30c0-11 9-20 20-20s20 9 20 20-9 20-20 20" 
+                              fill="none" 
+                              stroke="url(#logoGradient)" 
+                              stroke-width="2">
+                            <animate attributeName="d" 
+                                     dur="3s" 
+                                     repeatCount="indefinite"
+                                     values="M20 30c0-11 9-20 20-20s20 9 20 20-9 20-20 20;
+                                             M20 30c0-15 9-25 20-25s20 15 20 25-9 15-20 15;
+                                             M20 30c0-11 9-20 20-20s20 9 20 20-9 20-20 20"/>
+                        </path>
+                        
+                        <!-- Text Elements -->
+                        <text x="70" y="35" 
+                              font-family="Poppins, sans-serif" 
+                              font-size="24" 
+                              font-weight="600" 
+                              fill="#2C5282">
+                            <tspan>Monique</tspan>
+                            <tspan x="70" y="55" font-size="16">FOUNDATION</tspan>
+                        </text>
+                    </svg>                </a>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="impact.html" class="nav-link">Our Impact</a></li>
+                    <li><a href="education-fund.html" class="nav-link">Education Fund</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="cta-buttons">
+                <a href="donate.html" class="btn btn-primary">Donate</a>
+                <a href="shop.html" class="btn btn-secondary">Shop</a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <div class="max-w-4xl mx-auto px-4 py-20">
+            <h1 class="text-5xl font-bold mb-6">Let's Connect</h1>
+            <p class="text-xl text-purple-100">Have a project in mind? I'd love to hear about it.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <div class="grid md:grid-cols-2 gap-12">
+            <!-- Contact Information -->
+            <div class="space-y-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">Get in Touch</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-purple-100 p-3 rounded-full">
+                                <i class="fas fa-envelope text-purple-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Email</p>
+                                <p class="font-medium">hello@example.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-purple-100 p-3 rounded-full">
+                                <i class="fas fa-phone text-purple-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Phone</p>
+                                <p class="font-medium">+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-purple-100 p-3 rounded-full">
+                                <i class="fas fa-map-marker-alt text-purple-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Location</p>
+                                <p class="font-medium">San Francisco, CA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <form class="space-y-6" action="#" method="POST">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">
+                            Name
+                        </label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 px-4 py-2"
+                            placeholder="Your name"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 px-4 py-2"
+                            placeholder="your@email.com"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-700">
+                            Subject
+                        </label>
+                        <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            required
+                            class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 px-4 py-2"
+                            placeholder="What's this about?"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">
+                            Message
+                        </label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="4"
+                            required
+                            class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 px-4 py-2"
+                            placeholder="Tell me about your project..."
+                        ></textarea>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="w-full rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 py-3 px-6 text-white font-medium shadow-lg hover:from-purple-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-300"
+                    >
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 

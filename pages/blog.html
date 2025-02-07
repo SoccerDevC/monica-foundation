@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Monique Richards Foundation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/header.css">
+    <script src="../scripts/header.js" defer></script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50">
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="/">
+                    <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#2C5282"/>
+                                <stop offset="100%" style="stop-color:#ED8936"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Decorative Element -->
+                        <path d="M20 30c0-11 9-20 20-20s20 9 20 20-9 20-20 20" 
+                              fill="none" 
+                              stroke="url(#logoGradient)" 
+                              stroke-width="2">
+                            <animate attributeName="d" 
+                                     dur="3s" 
+                                     repeatCount="indefinite"
+                                     values="M20 30c0-11 9-20 20-20s20 9 20 20-9 20-20 20;
+                                             M20 30c0-15 9-25 20-25s20 15 20 25-9 15-20 15;
+                                             M20 30c0-11 9-20 20-20s20 9 20 20-9 20-20 20"/>
+                        </path>
+                        
+                        <!-- Text Elements -->
+                        <text x="70" y="35" 
+                              font-family="Poppins, sans-serif" 
+                              font-size="24" 
+                              font-weight="600" 
+                              fill="#2C5282">
+                            <tspan>Monique</tspan>
+                            <tspan x="70" y="55" font-size="16">FOUNDATION</tspan>
+                        </text>
+                    </svg>                </a>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="impact.html" class="nav-link">Our Impact</a></li>
+                    <li><a href="education-fund.html" class="nav-link">Education Fund</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="cta-buttons">
+                <a href="donate.html" class="btn btn-primary">Donate</a>
+                <a href="shop.html" class="btn btn-secondary">Shop</a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <div class="max-w-4xl mx-auto px-4 py-20">
+            <h1 class="text-5xl font-bold mb-6">Our Impact Stories</h1>
+            <p class="text-xl text-purple-100">Discover how we're transforming lives through education and empowerment.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <div class="grid gap-8">
+            <article class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div class="text-purple-600 text-sm font-semibold mb-4">March 15, 2024</div>
+                <h2 class="text-2xl font-bold mb-4 hover:text-purple-600 transition-colors">New Women's Group in Woodlawn: Expanding Our Community Impact</h2>
+                <p class="text-gray-600 mb-4">We're excited to announce the launch of our newest women's group in Woodlawn. This initiative aims to identify children unable to attend school and provide vital community resources. Learn about our expansion and how it's already making a difference...</p>
+                <a href="blog/woodlawn-group.html" class="text-purple-600 font-semibold hover:text-purple-800">Read More →</a>
+            </article>
+
+            <article class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div class="text-purple-600 text-sm font-semibold mb-4">March 10, 2024</div>
+                <h2 class="text-2xl font-bold mb-4 hover:text-purple-600 transition-colors">Success Story: From Paper Beads to Home Renovation</h2>
+                <p class="text-gray-600 mb-4">Meet Sarah, one of our incredible artisans who transformed her family's life through our paper bead initiative. Through dedication and support, she's not only mastered her craft but also renovated her home...</p>
+                <a href="blog/success-story-sarah.html" class="text-purple-600 font-semibold hover:text-purple-800">Read More →</a>
+            </article>
+
+            <article class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div class="text-purple-600 text-sm font-semibold mb-4">March 5, 2024</div>
+                <h2 class="text-2xl font-bold mb-4 hover:text-purple-600 transition-colors">Celebrating 100 Children Sponsored: A Milestone in Education</h2>
+                <p class="text-gray-600 mb-4">We've reached an incredible milestone - 100 children sponsored through our education program! Discover the journey that led us here, from our humble beginnings to this remarkable achievement...</p>
+                <a href="blog/education-milestone.html" class="text-purple-600 font-semibold hover:text-purple-800">Read More →</a>
+            </article>
+
+            <article class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div class="text-purple-600 text-sm font-semibold mb-4">March 1, 2024</div>
+                <h2 class="text-2xl font-bold mb-4 hover:text-purple-600 transition-colors">From Tour Guide to Foundation: Monique's Journey</h2>
+                <p class="text-gray-600 mb-4">The inspiring story of how a chance encounter during a tour guide experience led Monique Richards to establish our foundation. Learn about the tourist who sparked the initial idea and how it grew into the impactful organization we are today...</p>
+                <a href="blog/monique-journey.html" class="text-purple-600 font-semibold hover:text-purple-800">Read More →</a>
+            </article>
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-12 flex justify-center space-x-4">
+            <a href="#" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">1</a>
+            <a href="#" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">2</a>
+            <a href="#" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">3</a>
+            <span class="px-4 py-2">...</span>
+            <a href="#" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300">Next →</a>
+        </div>
+    </main>
+
+    <script>
+        // Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 

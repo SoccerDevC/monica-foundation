@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Monique Richards Foundation</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <script src="../scripts/header.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="/">
+                    <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#2C5282"/>
+                                <stop offset="100%" style="stop-color:#ED8936"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Decorative Element -->
+                        <path d="M20 30c0-11 9-20 20-20s20 9 20 20-9 20-20 20" 
+                              fill="none" 
+                              stroke="url(#logoGradient)" 
+                              stroke-width="2">
+                            <animate attributeName="d" 
+                                     dur="3s" 
+                                     repeatCount="indefinite"
+                                     values="M20 30c0-11 9-20 20-20s20 9 20 20-9 20-20 20;
+                                             M20 30c0-15 9-25 20-25s20 15 20 25-9 15-20 15;
+                                             M20 30c0-11 9-20 20-20s20 9 20 20-9 20-20 20"/>
+                        </path>
+                        
+                        <!-- Text Elements -->
+                        <text x="70" y="35" 
+                              font-family="Poppins, sans-serif" 
+                              font-size="24" 
+                              font-weight="600" 
+                              fill="#2C5282">
+                            <tspan>Monique</tspan>
+                            <tspan x="70" y="55" font-size="16">FOUNDATION</tspan>
+                        </text>
+                    </svg>                </a>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="impact.html" class="nav-link">Our Impact</a></li>
+                    <li><a href="education-fund.html" class="nav-link">Education Fund</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="cta-buttons">
+                <a href="donate.html" class="btn btn-primary">Donate</a>
+                <a href="shop.html" class="btn btn-secondary">Shop</a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    <main>
+        <!-- Story Section -->
+        <section class="story-section">
+            <div class="container">
+                <h1>Our Story</h1>
+                <div class="story-content">
+                    <div class="story-text">
+                        <p>Founded in 2019 by Monique Richards (formerly Monique Barbier), our foundation emerged from a serendipitous encounter that would change many lives forever.</p>
+                        <p>After completing her university studies and participating in an exchange program in the U.S., Monique embarked on a journey as a tour guide with MyGuide website, offering her services free of charge. It was during one of these tours that she encountered a tourist visiting a slum area where women were crafting beautiful paper beads despite lacking basic resources.</p>
+                        <p>Inspired by the resilience of these women, this chance meeting sparked a movement. What began with sourcing buckets from Poland grew into a comprehensive initiative supporting education and economic empowerment.</p>
+                        <p>Today, we proudly sponsor the education of 100 children and empower women through sustainable craft enterprises, helping them renovate their homes and secure better futures for their families.</p>
+                    </div>
+                    <div class="story-image">
+                        <img src="../assets/images/founder.jpg" alt="Monique Richards, Founder">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section class="programs-section">
+            <div class="container">
+                <h2>Our Programs & Initiatives</h2>
+                <div class="programs-grid">
+                    <div class="program-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Education</h3>
+                        <p>Sponsoring children's education and ensuring access to quality learning opportunities through comprehensive support and mentorship.</p>
+                    </div>
+                    <div class="program-item">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <h3>Economic Empowerment</h3>
+                        <p>Assisting women's groups in marketing their unique crafts, fostering self-reliance and financial independence through sustainable business practices.</p>
+                    </div>
+                    <div class="program-item">
+                        <i class="fas fa-users"></i>
+                        <h3>Community Support</h3>
+                        <p>Launching initiatives to identify and support children unable to attend school while providing additional community resources and development programs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Directors Section -->
+        <section class="directors-section">
+            <div class="container">
+                <h2>Meet Our Directors</h2>
+                <div class="directors-grid">
+                    <!-- Director Card Template - Repeat for each director -->
+                    <div class="director-card">
+                        <div class="director-images">
+                            <img src="../assets/images/directors/professional1.jpg" alt="Professional photo" class="professional-photo">
+                            <img src="../assets/images/directors/passport1.jpg" alt="Passport photo" class="passport-photo">
+                            <img src="../assets/images/directors/casual1.jpg" alt="Casual photo" class="casual-photo">
+                        </div>
+                        <div class="director-info">
+                            <h3>Director Name</h3>
+                            <p class="director-title">Position Title</p>
+                            <p class="director-bio">Brief biography highlighting the director's background and vision for community empowerment.</p>
+                            <a href="../assets/cv/director1-cv.pdf" class="btn btn-text" download>Download CV</a>
+                        </div>
+                    </div>
+                    <!-- Repeat director-card for other directors -->
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer will be the same as index.html -->
+    <script src="../js/script.js"></script>
+</body>
+</html> 

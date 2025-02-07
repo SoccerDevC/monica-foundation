@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Monique Richards Foundation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/header.css">
+    <script src="../scripts/header.js" defer></script>
+    <link rel="stylesheet" href="/styles/header.css">
+    <style>
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header included from header.html -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="/">
+                    <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#2C5282"/>
+                                <stop offset="100%" style="stop-color:#ED8936"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Decorative Element -->
+                        <path d="M20 30c0-11 9-20 20-20s20 9 20 20-9 20-20 20" 
+                              fill="none" 
+                              stroke="url(#logoGradient)" 
+                              stroke-width="2">
+                            <animate attributeName="d" 
+                                     dur="3s" 
+                                     repeatCount="indefinite"
+                                     values="M20 30c0-11 9-20 20-20s20 9 20 20-9 20-20 20;
+                                             M20 30c0-15 9-25 20-25s20 15 20 25-9 15-20 15;
+                                             M20 30c0-11 9-20 20-20s20 9 20 20-9 20-20 20"/>
+                        </path>
+                        
+                        <!-- Text Elements -->
+                        <text x="70" y="35" 
+                              font-family="Poppins, sans-serif" 
+                              font-size="24" 
+                              font-weight="600" 
+                              fill="#2C5282">
+                            <tspan>Monique</tspan>
+                            <tspan x="70" y="55" font-size="16">FOUNDATION</tspan>
+                        </text>
+                    </svg>                </a>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="impact.html" class="nav-link">Our Impact</a></li>
+                    <li><a href="education-fund.html" class="nav-link">Education Fund</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            <div class="cta-buttons">
+                <a href="donate.html" class="btn btn-primary">Donate</a>
+                <a href="shop.html" class="btn btn-secondary">Shop</a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Shop Banner -->
+    <section class="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-20">
+        <div class="max-w-6xl mx-auto px-4">
+            <h1 class="text-5xl font-bold mb-6">Handcrafted with Love</h1>
+            <p class="text-xl text-purple-100">Each purchase supports women artisans and their families.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        <!-- Filter Section -->
+        <div class="flex flex-wrap gap-4 mb-8">
+            <select class="px-4 py-2 border rounded-lg">
+                <option>All Categories</option>
+                <option>Paper Beads</option>
+                <option>Jewelry</option>
+                <option>Home Decor</option>
+                <option>Accessories</option>
+            </select>
+            <select class="px-4 py-2 border rounded-lg">
+                <option>Sort by Price</option>
+                <option>Low to High</option>
+                <option>High to Low</option>
+            </select>
+            <select class="px-4 py-2 border rounded-lg">
+                <option>All Collections</option>
+                <option>New Arrivals</option>
+                <option>Best Sellers</option>
+                <option>Limited Edition</option>
+            </select>
+        </div>
+
+        <!-- Featured Collection -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8">Featured Collection</h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 product-card">
+                    <div class="relative">
+                        <img src="../assets/images/1.jpeg" alt="Rainbow Paper Bead Necklace" class="w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm">New</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2">Rainbow Paper Bead Necklace</h3>
+                        <p class="text-gray-600 mb-4">Handcrafted by women artisans in Woodlawn</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">$35.00</span>
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 product-card">
+                    <div class="relative">
+                        <img src="../assets/images/2.jpeg" alt="Spiral Bead Bracelet Set" class="w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-orange-600 text-white px-3 py-1 rounded-full text-sm">Best Seller</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2">Spiral Bead Bracelet Set</h3>
+                        <p class="text-gray-600 mb-4">Set of 3 handmade bracelets</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">$45.00</span>
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 product-card">
+                    <div class="relative">
+                        <img src="../assets/images/3.jpeg" alt="Beaded Wall Hanging" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2">Beaded Wall Hanging</h3>
+                        <p class="text-gray-600 mb-4">Modern home decor piece</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">$75.00</span>
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 product-card">
+                    <div class="relative">
+                        <img src="../assets/images/4.jpeg" alt="Paper Bead Earrings" class="w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm">Eco-friendly</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2">Paper Bead Earrings</h3>
+                        <p class="text-gray-600 mb-4">Lightweight statement pieces</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">$25.00</span>
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Arrivals -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8">New Arrivals</h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Product 5 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 product-card">
+                    <div class="relative">
+                        <img src="../assets/images/5.jpeg" alt="Beaded Table Runner" class="w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm">New</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2">Beaded Table Runner</h3>
+                        <p class="text-gray-600 mb-4">Elegant dining table accessory</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">$65.00</span>
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 product-card">
+                    <div class="relative">
+                        <img src="../assets/images/1.jpeg" alt="Beaded Clutch Bag" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2">Beaded Clutch Bag</h3>
+                        <p class="text-gray-600 mb-4">Evening wear accessory</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">$55.00</span>
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 product-card">
+                    <div class="relative">
+                        <img src="../assets/images/2.jpeg" alt="Beaded Bookmark Set" class="w-full h-64 object-cover">
+                        <span class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm">Set of 3</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2">Beaded Bookmark Set</h3>
+                        <p class="text-gray-600 mb-4">Colorful reading accessories</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">$20.00</span>
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 product-card">
+                    <div class="relative">
+                        <img src="../assets/images/3.jpeg" alt="Beaded Suncatcher" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2">Beaded Suncatcher</h3>
+                        <p class="text-gray-600 mb-4">Window decoration piece</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">$40.00</span>
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section class="bg-white rounded-xl shadow-lg p-8 mb-16">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4">Your Purchase Makes a Difference</h2>
+                    <p class="text-gray-600 mb-6">Every product you buy helps support women artisans and their families. 85% of the proceeds go directly to the artisans, helping them achieve financial independence and better living conditions.</p>
+                    <div class="flex gap-4">
+                        <div>
+                            <h4 class="text-2xl font-bold text-purple-600">50+</h4>
+                            <p class="text-sm text-gray-600">Artisans Supported</p>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-bold text-purple-600">100%</h4>
+                            <p class="text-sm text-gray-600">Handmade Products</p>
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-bold text-purple-600">85%</h4>
+                            <p class="text-sm text-gray-600">Proceeds to Artisans</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="../assets/images/4.jpeg" alt="Artisan at Work" class="rounded-lg shadow-lg">
+                    <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-4">
+                        <p class="text-sm font-medium">"This work has changed my life and my children's future."</p>
+                        <p class="text-xs text-gray-600">- Sarah, Artisan since 2020</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/scripts/header.js"></script>
+</body>
+</html> 

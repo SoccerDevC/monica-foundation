@@ -1,0 +1,280 @@
+/* Education Fund Page Styles */
+
+/* Hero Section */
+.education-hero {
+    padding: 120px 2rem 4rem;
+    background: linear-gradient(rgba(44, 82, 130, 0.9), rgba(44, 82, 130, 0.9)),
+                url('../assets/images/education-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    text-align: center;
+}
+
+.education-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: 3rem;
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Impact Section */
+.impact-section {
+    padding: 4rem 2rem;
+    background: var(--white);
+}
+
+.impact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.impact-list {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.impact-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.impact-list i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+.progress-tracker {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.progress-bar {
+    height: 30px;
+    background: #e2e8f0;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.progress {
+    height: 100%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 1s ease;
+}
+
+.progress-text {
+    color: var(--white);
+    font-weight: 600;
+}
+
+/* Donation Options */
+.donation-section {
+    padding: 4rem 2rem;
+    background: var(--light-gray);
+}
+
+.donation-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.donation-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    transition: var(--transition);
+}
+
+.donation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.donation-card.featured {
+    border: 2px solid var(--primary-color);
+    transform: scale(1.05);
+}
+
+.featured-tag {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.amount {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin: 1rem 0;
+}
+
+.benefits {
+    list-style: none;
+    margin: 2rem 0;
+}
+
+.benefits li {
+    margin-bottom: 0.8rem;
+}
+
+.amount-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.amount-btn {
+    padding: 0.5rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.amount-btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* Success Stories */
+.success-stories {
+    padding: 4rem 2rem;
+    background: var(--white);
+}
+
+.stories-slider {
+    position: relative;
+    margin-top: 2rem;
+    overflow: hidden;
+}
+
+.story-card {
+    background: var(--light-gray);
+    border-radius: 10px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+
+.story-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.story-content {
+    padding: 2rem;
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.slider-controls button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: var(--primary-color);
+    color: var(--white);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 4rem 2rem;
+    background: var(--light-gray);
+}
+
+.faq-grid {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.faq-item {
+    margin-bottom: 1rem;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1rem;
+    background: var(--white);
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.faq-answer {
+    display: none;
+    padding: 1rem;
+    background: var(--white);
+    margin-top: 2px;
+    border-radius: 0 0 5px 5px;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-stats {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .impact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .donation-options {
+        grid-template-columns: 1fr;
+    }
+
+    .donation-card.featured {
+        transform: none;
+    }
+
+    .story-card {
+        grid-template-columns: 1fr;
+    }
+} 
