@@ -1,0 +1,68 @@
+/* Base Animation Classes */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero Animations */
+.hero-content {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-image {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-content.animate-in,
+.hero-image.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Program Card Hover Effects */
+.program-card {
+    transition: all 0.3s ease;
+}
+
+.program-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Stats Animation */
+.stat-item {
+    transition: all 0.5s ease;
+}
+
+.stat-item.animate-in {
+    animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom Animations */
+@keyframes popIn {
+    0% { transform: scale(0.6); opacity: 0; }
+    60% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes floatAnimation {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Parallax Effects */
+.parallax {
+    will-change: transform;
+    transform: translateZ(0);
+} 

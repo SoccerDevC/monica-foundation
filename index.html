@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="styles/footer.css">
     <link rel="stylesheet" href="styles/preloader.css">
+    <link rel="stylesheet" href="styles/animations.css">
 
     <script src="scripts/header.js" defer></script>
     <style>
         body { font-family: 'Poppins', sans-serif; }
     </style></head>
 <body>
-    <header class="header">
+    <header class="header content-hidden">
         <nav class="nav-container">
             <div class="logo">
                 <a href="/">
@@ -75,10 +76,10 @@
         </nav>
     </header>
 
-    <main>
+    <main class="content-hidden">
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-content">
+            <div class="hero-content animate-on-scroll">
                 <h1>Empowering Women and Children Through Education</h1>
                 <p>Supporting sustainable education and economic independence in communities</p>
                 <div class="hero-cta">
@@ -86,7 +87,7 @@
                     <a href="../pages/about.html" class="btn btn-secondary">Learn More</a>
                 </div>
             </div>
-            <div class="hero-image">
+            <div class="hero-image animate-on-scroll parallax" data-speed="0.5">
                 <img src="assets/images/hero-image.jpg" alt="Women crafting paper beads">
             </div>
         </section>
@@ -94,15 +95,15 @@
         <!-- Impact Stats -->
         <section class="impact-stats">
             <div class="stat-container">
-                <div class="stat-item">
+                <div class="stat-item animate-on-scroll">
                     <h3>100+</h3>
                     <p>Children Sponsored</p>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item animate-on-scroll">
                     <h3>50+</h3>
                     <p>Women Empowered</p>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item animate-on-scroll">
                     <h3>3</h3>
                     <p>Community Projects</p>
                 </div>
@@ -111,21 +112,21 @@
 
         <!-- Featured Programs -->
         <section class="featured-programs">
-            <h2>Our Programs</h2>
+            <h2 class="animate-on-scroll">Our Programs</h2>
             <div class="program-grid">
-                <div class="program-card">
+                <div class="program-card animate-on-scroll parallax" data-speed="0.2">
                     <img src="assets/images/education.jpg" alt="Education Program">
                     <h3>Education</h3>
                     <p>Sponsoring children's education and ensuring access to quality learning opportunities.</p>
                     <a href="/programs/education" class="btn btn-text">Learn More →</a>
                 </div>
-                <div class="program-card">
+                <div class="program-card animate-on-scroll parallax" data-speed="0.2">
                     <img src="assets/images/economic.jpg" alt="Economic Empowerment">
                     <h3>Economic Empowerment</h3>
                     <p>Supporting women's groups in marketing their unique crafts and building sustainable businesses.</p>
                     <a href="/programs/economic" class="btn btn-text">Learn More →</a>
                 </div>
-                <div class="program-card">
+                <div class="program-card animate-on-scroll parallax" data-speed="0.2">
                     <img src="assets/images/community.jpg" alt="Community Support">
                     <h3>Community Support</h3>
                     <p>Launching initiatives to strengthen communities and provide essential resources.</p>
@@ -135,7 +136,7 @@
         </section>
     </main>
 
-    <footer class="bg-gray-900 text-gray-300 py-12">
+    <footer class="bg-gray-900 text-gray-300 py-12 content-hidden">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <!-- About Section -->
@@ -222,8 +223,16 @@
 
     <script src="scripts/preloader.js"></script>
     <script>
-        // Initialize preloader
-        const preloader = new SitePreloader();
+        // Initialize preloader first
+        document.addEventListener('DOMContentLoaded', () => {
+            const preloader = new SitePreloader();
+        });
+    </script>
+    <script src="scripts/animations.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            new PageAnimations();
+        });
     </script>
 </body>
 </html> 

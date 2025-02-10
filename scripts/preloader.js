@@ -15,9 +15,11 @@ class SitePreloader {
                 <div class="loading-text">
                     <span>M</span><span>O</span><span>N</span><span>I</span><span>Q</span><span>U</span><span>E</span>
                     <span>&nbsp;</span>
-                    <span>R</span><span>I</span><span>C</span><span>H</span><span>A</span><span>R</span><span>D</span><span>S</span>
+                    <span>F</span><span>O</span><span>U</span><span>N</span><span>D</span><span>A</span><span>T</span><span>I</span><span>O</span><span>N</span>
                 </div>
-                <div id="sequence-container" class="sequence-container"></div>
+                <div id="sequence-container" class="sequence-container">
+                    <div class="sequence-wrapper"></div>
+                </div>
             </div>
         `;
         document.body.appendChild(preloader);
@@ -39,10 +41,12 @@ class SitePreloader {
         ];
 
         setTimeout(() => {
-            const container = document.getElementById('sequence-container');
-            
-            sequences.forEach((seq, index) => {
-                setTimeout(() => {
+            const wrapper = document.querySelector('.sequence-wrapper');
+            let currentIndex = 0;
+
+            const showNextSequence = () => {
+                if (currentIndex < sequences.length) {
+                    const seq = sequences[currentIndex];
                     const sequenceDiv = document.createElement('div');
                     sequenceDiv.className = 'sequence-item';
                     sequenceDiv.innerHTML = `
@@ -51,23 +55,30 @@ class SitePreloader {
                         </div>
                         <div class="sequence-text">${seq.text}</div>
                     `;
-                    container.appendChild(sequenceDiv);
-
-                    // Add animation class after a brief delay
+                    
+                    wrapper.innerHTML = '';
+                    wrapper.appendChild(sequenceDiv);
+                    
                     setTimeout(() => {
                         sequenceDiv.classList.add('visible');
+                        currentIndex++;
+                        if (currentIndex < sequences.length) {
+                            setTimeout(showNextSequence, 2000);
+                        } else {
+                            // Final delay before hiding preloader
+                            setTimeout(() => {
+                                const preloader = document.getElementById('preloader');
+                                preloader.style.opacity = '0';
+                                setTimeout(() => {
+                                    preloader.style.display = 'none';
+                                }, 1000);
+                            }, 0);
+                        }
                     }, 100);
-                }, index * 2000); // Show each sequence 2 seconds apart
-            });
+                }
+            };
 
-            // Hide preloader after all sequences
-            setTimeout(() => {
-                const preloader = document.getElementById('preloader');
-                preloader.style.opacity = '0';
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 1000);
-            }, (sequences.length * 2000) + 5000); // Additional 5 seconds after sequences
-        }, 5000); // Initial 5-second delay with founder image
+            showNextSequence();
+        }, 0); // Reduced initial delay to 2 seconds
     }
-} 
+}
