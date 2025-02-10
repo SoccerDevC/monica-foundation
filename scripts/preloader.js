@@ -9,27 +9,34 @@ class SitePreloader {
         preloader.id = 'preloader';
         preloader.innerHTML = `
             <div class="preloader-content">
-                <div class="foundation-image">
-                    <img src="assets/images/founder.jpg" alt="Foundation" class="foundation-logo">
+                <div id="founder-section" class="founder-section">
+                    <div class="foundation-image">
+                        <img src="assets/images/founder.jpg" alt="Foundation" class="foundation-logo">
+                    </div>
+                    <div class="loading-text">
+                        <span>M</span><span>O</span><span>N</span><span>I</span><span>Q</span><span>U</span><span>E</span>
+                        <span>&nbsp;</span>
+                        <span>R</span><span>I</span><span>C</span><span>H</span><span>A</span><span>R</span><span>D</span><span>S</span>
+                        <br>
+                        <span>F</span><span>O</span><span>U</span><span>N</span><span>D</span><span>A</span><span>T</span><span>I</span><span>O</span><span>N</span>
+                    </div>
                 </div>
-                <div class="loading-text">
-                    <span>M</span><span>O</span><span>N</span><span>I</span><span>Q</span><span>U</span><span>E</span>
-                    <span>&nbsp;</span>
-                    <span>F</span><span>O</span><span>U</span><span>N</span><span>D</span><span>A</span><span>T</span><span>I</span><span>O</span><span>N</span>
-                </div>
-                <div id="sequence-container" class="sequence-container">
-                    <div class="sequence-wrapper"></div>
-                </div>
+                <div id="sequence-container" class="sequence-container"></div>
             </div>
         `;
         document.body.appendChild(preloader);
 
-        // Animate letters sequentially
+        // Hide main content initially
+        document.querySelector('main').style.opacity = '0';
+        document.querySelector('header').style.opacity = '0';
+        document.querySelector('footer').style.opacity = '0';
+
+        // Animate letters
         const letters = preloader.querySelectorAll('.loading-text span');
         letters.forEach((letter, index) => {
             setTimeout(() => {
                 letter.classList.add('animate');
-            }, index * 100);
+            }, index * 50);
         });
     }
 
@@ -41,44 +48,45 @@ class SitePreloader {
         ];
 
         setTimeout(() => {
-            const wrapper = document.querySelector('.sequence-wrapper');
-            let currentIndex = 0;
+            const founderSection = document.getElementById('founder-section');
+            founderSection.style.opacity = '0';
+            
+            setTimeout(() => {
+                founderSection.style.display = 'none';
+                const container = document.getElementById('sequence-container');
+                container.style.display = 'flex';
+                
+                sequences.forEach((seq, index) => {
+                    setTimeout(() => {
+                        const sequenceDiv = document.createElement('div');
+                        sequenceDiv.className = 'sequence-item';
+                        sequenceDiv.innerHTML = `
+                            <div class="sequence-image">
+                                <img src="${seq.image}" alt="Impact Image">
+                            </div>
+                            <div class="sequence-text">${seq.text}</div>
+                        `;
+                        container.appendChild(sequenceDiv);
+                        
+                        requestAnimationFrame(() => {
+                            sequenceDiv.classList.add('visible');
+                        });
+                    }, index * 500);
+                });
 
-            const showNextSequence = () => {
-                if (currentIndex < sequences.length) {
-                    const seq = sequences[currentIndex];
-                    const sequenceDiv = document.createElement('div');
-                    sequenceDiv.className = 'sequence-item';
-                    sequenceDiv.innerHTML = `
-                        <div class="sequence-image">
-                            <img src="${seq.image}" alt="Impact Image">
-                        </div>
-                        <div class="sequence-text">${seq.text}</div>
-                    `;
-                    
-                    wrapper.innerHTML = '';
-                    wrapper.appendChild(sequenceDiv);
+                // End preloader and show content
+                setTimeout(() => {
+                    const preloader = document.getElementById('preloader');
+                    preloader.style.opacity = '0';
                     
                     setTimeout(() => {
-                        sequenceDiv.classList.add('visible');
-                        currentIndex++;
-                        if (currentIndex < sequences.length) {
-                            setTimeout(showNextSequence, 2000);
-                        } else {
-                            // Final delay before hiding preloader
-                            setTimeout(() => {
-                                const preloader = document.getElementById('preloader');
-                                preloader.style.opacity = '0';
-                                setTimeout(() => {
-                                    preloader.style.display = 'none';
-                                }, 1000);
-                            }, 0);
-                        }
-                    }, 100);
-                }
-            };
-
-            showNextSequence();
-        }, 0); // Reduced initial delay to 2 seconds
+                        preloader.style.display = 'none';
+                        document.querySelector('main').style.opacity = '1';
+                        document.querySelector('header').style.opacity = '1';
+                        document.querySelector('footer').style.opacity = '1';
+                    }, 500);
+                }, sequences.length * 500 + 1000);
+            }, 300);
+        }, 2000);
     }
 }
