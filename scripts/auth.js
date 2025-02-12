@@ -30,45 +30,96 @@ console.log('Firebase initialized');
 
 // Configure Google Auth Provider
 const googleProvider = new firebase.auth.GoogleAuthProvider();
-googleProvider.setCustomParameters({
-    prompt: 'select_account'
-});
+googleProvider.addScope('profile');
+googleProvider.addScope('email');
 
-// Google Sign In
+// Google Sign In Function
 async function signInWithGoogle() {
     try {
+        // Show loading state
+        const googleButtons = document.querySelectorAll('.google-btn');
+        googleButtons.forEach(btn => {
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connecting...';
+        });
+
         const result = await auth.signInWithPopup(googleProvider);
         const user = result.user;
         
-        // Store basic user info even if offline
-        const userData = {
-            uid: user.uid,
-            email: user.email,
-            fullName: user.displayName
-        };
+        console.log("Google sign-in successful", user);
 
+        // Store user data in Firestore
         try {
-            // Try to save to Firestore, but don't block on it
             await db.collection('users').doc(user.uid).set({
                 fullName: user.displayName,
                 email: user.email,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                photoURL: user.photoURL,
+                lastLogin: firebase.firestore.FieldValue.serverTimestamp()
             }, { merge: true });
+
+            // Store in localStorage
+            localStorage.setItem('user', JSON.stringify({
+                uid: user.uid,
+                email: user.email,
+                fullName: user.displayName,
+                photoURL: user.photoURL
+            }));
+
+            showNotification('Successfully signed in with Google!', 'success');
+            
+            // Redirect after short delay
+            setTimeout(() => {
+                window.location.href = '/pages/index.html';
+            }, 1500);
+
         } catch (firestoreError) {
-            console.log('Firestore update failed, but login successful:', firestoreError);
+            console.error("Firestore error:", firestoreError);
+            // Even if Firestore fails, still log the user in
+            localStorage.setItem('user', JSON.stringify({
+                uid: user.uid,
+                email: user.email,
+                fullName: user.displayName,
+                photoURL: user.photoURL
+            }));
+            
+            showNotification('Signed in! Some data may sync later.', 'success');
+            setTimeout(() => {
+                window.location.href = '/pages/index.html';
+            }, 1500);
         }
 
-        // Save to localStorage and proceed with navigation
-        localStorage.setItem('user', JSON.stringify(userData));
-        showNotification('Successfully signed in with Google!', 'success');
-        
-        setTimeout(() => {
-            window.location.href = '/pages/landing.html';
-        }, 1500);
-
     } catch (error) {
-        console.error('Google sign in error:', error);
-        showNotification(error.message, 'error');
+        console.error("Google sign in error:", error);
+        let errorMessage = 'Google sign-in failed';
+        
+        switch (error.code) {
+            case 'auth/popup-blocked':
+                errorMessage = 'Please allow popups for this website and try again';
+                break;
+            case 'auth/popup-closed-by-user':
+                errorMessage = 'Sign-in was cancelled. Please try again';
+                break;
+            case 'auth/cancelled-popup-request':
+                errorMessage = 'Only one sign-in window allowed at a time';
+                break;
+            case 'auth/network-request-failed':
+                errorMessage = 'Network error. Please check your connection';
+                break;
+            default:
+                errorMessage = error.message;
+        }
+        
+        showNotification(errorMessage, 'error');
+    } finally {
+        // Reset buttons
+        const googleButtons = document.querySelectorAll('.google-btn');
+        googleButtons.forEach(btn => {
+            btn.disabled = false;
+            btn.innerHTML = `
+                <img src="../assets/images/google-icon.svg" alt="Google">
+                Continue with Google
+            `;
+        });
     }
 }
 
@@ -288,17 +339,6 @@ function togglePassword(inputId) {
         icon.classList.remove('fa-eye');
         icon.classList.add('fa-eye-slash');
     }
-}
-
-// Add to your existing error handling
-switch (error.code) {
-    // ... existing cases ...
-    case 'auth/popup-closed-by-user':
-        errorMessage = 'Google sign-in was cancelled. Please try again.';
-        break;
-    case 'auth/popup-blocked':
-        errorMessage = 'Pop-up was blocked by your browser. Please allow pop-ups for this site.';
-        break;
 }
 
 // Add this to your existing auth.js
