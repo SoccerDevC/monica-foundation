@@ -40,37 +40,35 @@ async function signInWithGoogle() {
         const result = await auth.signInWithPopup(googleProvider);
         const user = result.user;
         
-        // Check if user exists in Firestore
-        const userDoc = await db.collection('users').doc(user.uid).get();
-        
-        if (!userDoc.exists) {
-            // Add new user to Firestore
+        // Store basic user info even if offline
+        const userData = {
+            uid: user.uid,
+            email: user.email,
+            fullName: user.displayName
+        };
+
+        try {
+            // Try to save to Firestore, but don't block on it
             await db.collection('users').doc(user.uid).set({
                 fullName: user.displayName,
                 email: user.email,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp()
-            });
+            }, { merge: true });
+        } catch (firestoreError) {
+            console.log('Firestore update failed, but login successful:', firestoreError);
         }
 
+        // Save to localStorage and proceed with navigation
+        localStorage.setItem('user', JSON.stringify(userData));
         showNotification('Successfully signed in with Google!', 'success');
         
-        localStorage.setItem('user', JSON.stringify({
-            uid: user.uid,
-            email: user.email,
-            fullName: user.displayName
-        }));
-
         setTimeout(() => {
             window.location.href = '/pages/index.html';
         }, 1500);
 
     } catch (error) {
         console.error('Google sign in error:', error);
-        if (error.code === 'auth/operation-not-supported-in-this-environment') {
-            showNotification('Please use HTTPS or localhost for Google sign-in', 'error');
-        } else {
-            showNotification(error.message, 'error');
-        }
+        showNotification(error.message, 'error');
     }
 }
 
@@ -159,55 +157,31 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = document.getElementById('loginPassword').value;
 
         try {
-            // First authenticate the user
             const userCredential = await auth.signInWithEmailAndPassword(email, password);
             
+            // Store basic user info
+            const userData = {
+                uid: userCredential.user.uid,
+                email: email
+            };
+
             try {
-                // Then try to get user data
                 const userDoc = await db.collection('users').doc(userCredential.user.uid).get();
-                
                 if (userDoc.exists) {
-                    const userData = userDoc.data();
-                    localStorage.setItem('user', JSON.stringify({
-                        uid: userCredential.user.uid,
-                        email: email,
-                        fullName: userData.fullName
-                    }));
-                    
-                    showNotification('Login successful!', 'success');
-                    setTimeout(() => {
-                        window.location.href = '../index.html';
-                    }, 1500);
-                } else {
-                    // If user auth exists but no Firestore document, create one
-                    await db.collection('users').doc(userCredential.user.uid).set({
-                        email: email,
-                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                    });
-                    
-                    localStorage.setItem('user', JSON.stringify({
-                        uid: userCredential.user.uid,
-                        email: email
-                    }));
-                    
-                    showNotification('Login successful!', 'success');
-                    setTimeout(() => {
-                        window.location.href = '../index.html';
-                    }, 1500);
+                    userData.fullName = userDoc.data().fullName;
                 }
             } catch (firestoreError) {
-                // If Firestore is offline but authentication succeeded
-                console.log('Firestore error:', firestoreError);
-                localStorage.setItem('user', JSON.stringify({
-                    uid: userCredential.user.uid,
-                    email: email
-                }));
-                
-                showNotification('Login successful! Some user data may be unavailable offline.', 'success');
-                setTimeout(() => {
-                    window.location.href = '../index.html';
-                }, 1500);
+                console.log('Firestore fetch failed, but login successful:', firestoreError);
             }
+
+            // Save to localStorage and proceed
+            localStorage.setItem('user', JSON.stringify(userData));
+            showNotification('Login successful!', 'success');
+            
+            setTimeout(() => {
+                window.location.href = '/pages/index.html';
+            }, 1500);
+
         } catch (error) {
             console.error('Login error:', error);
             let errorMessage = 'An error occurred during login';
