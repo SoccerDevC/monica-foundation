@@ -3,37 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Monique Richards Foundation</title>
+    <title>Monique Richards Foundation - Empowering Communities</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <link rel="stylesheet" href="styles/landing.css">
     <link rel="stylesheet" href="styles/auth.css">
-    <!-- Add to head section -->
-    <!-- Add to the head section -->
-    <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
-        import { getAuth } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
-        import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
-        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js';
-    </script>
-
-    <!-- Add these scripts in the head section -->
+    <!-- Firebase scripts -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
-
-    <!-- Add before closing body tag -->
-    <script type="module" src="scripts/auth.js"></script>
-
-    <!-- Add these meta tags -->
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <meta name="referrer" content="no-referrer-when-downgrade">
 </head>
-<body>
-    <script src="scripts/authGuard.js"></script>
-    <header class="landing-header">
-        <nav>
+<body class="bg-gradient-to-br from-blue-50 to-orange-50">
+    <header class="fixed w-full z-[100] bg-white/90 backdrop-blur-sm shadow-sm">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="logo">
                 <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -42,6 +26,7 @@
                             <stop offset="100%" style="stop-color:#ED8936"/>
                         </linearGradient>
                     </defs>
+                    <!-- Decorative Element -->
                     <path d="M20 30c0-11 9-20 20-20s20 9 20 20-9 20-20 20" 
                           fill="none" 
                           stroke="url(#logoGradient)" 
@@ -53,6 +38,8 @@
                                          M20 30c0-15 9-25 20-25s20 15 20 25-9 15-20 15;
                                          M20 30c0-11 9-20 20-20s20 9 20 20-9 20-20 20"/>
                     </path>
+                    
+                    <!-- Text Elements -->
                     <text x="70" y="35" 
                           font-family="Poppins, sans-serif" 
                           font-size="24" 
@@ -63,159 +50,415 @@
                     </text>
                 </svg>
             </div>
-            <div class="nav-links">
-                <a href="#about">About Us</a>
-                <a href="#impact">Our Impact</a>
-                <a href="#contact">Contact</a>
-                <button class="login-btn">Login</button>
-                <button class="signup-btn">Sign Up</button>
+            
+            <!-- Mobile Menu Button -->
+            <button class="lg:hidden text-gray-600 hover:text-blue-600" id="menuBtn">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center gap-8">
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="#impact" class="nav-link">Our Impact</a>
+                <a href="#programs" class="nav-link">Programs</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button class="login-btn px-6 py-2 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100 transition-all transform hover:scale-105">
+                    <i class="fas fa-user mr-2"></i>Login
+                </button>
+                <button class="signup-btn px-6 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all transform hover:scale-105">
+                    <i class="fas fa-user-plus mr-2"></i>Join Us
+                </button>
             </div>
         </nav>
-    </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-content">
-                <h1>Changing Lives for the Better</h1>
-                <p>Join us in making a difference through education and community empowerment</p>
-                <div class="cta-buttons">
-                    <button class="watch-video">
-                        <span class="play-icon">▶</span>
-                        Watch Video
-                    </button>
-                    <button class="learn-more">Learn More</button>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="lg:hidden hidden">
+            <!-- Black overlay that covers everything including header -->
+            <div class="fixed inset-0 z-[200] bg-black">
+                <div class="container mx-auto h-full flex flex-col">
+                    <!-- Close button -->
+                    <div class="flex justify-end pt-6 px-4">
+                        <button id="closeMenu" class="text-white hover:text-blue-400 transition-colors">
+                            <i class="fas fa-times text-2xl"></i>
+                        </button>
+                    </div>
+
+                    <!-- Menu items - centered in remaining space -->
+                    <div class="flex-1 flex flex-col items-center justify-center gap-8 px-4">
+                        <a href="#about" class="text-2xl text-white hover:text-blue-400 transition-colors">About Us</a>
+                        <a href="#impact" class="text-2xl text-white hover:text-blue-400 transition-colors">Our Impact</a>
+                        <a href="#programs" class="text-2xl text-white hover:text-blue-400 transition-colors">Programs</a>
+                        <a href="#contact" class="text-2xl text-white hover:text-blue-400 transition-colors">Contact</a>
+                        
+                        <div class="w-full max-w-xs pt-8 space-y-4">
+                            <button class="login-btn w-full py-4 rounded-xl bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-all duration-300">
+                                <i class="fas fa-user mr-2"></i>Login
+                            </button>
+                            <button class="signup-btn w-full py-4 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300">
+                                <i class="fas fa-user-plus mr-2"></i>Join Us
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="../assets/images/hero-image.jpg" alt="Children smiling">
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="hero-section min-h-[90vh] flex items-center">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-center lg:text-left" data-aos="fade-right">
+                        <h1 class="text-4xl lg:text-6xl font-bold mb-6">
+                            Empowering Dreams,
+                            <span class="text-blue-600 block mt-2">Building Futures</span>
+                        </h1>
+                        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                            Join us in our mission to transform lives through education, 
+                            empowerment, and sustainable community development.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <button class="group flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                                <span class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-600 text-white group-hover:bg-blue-700">
+                                    <i class="fas fa-play text-sm"></i>
+                                </span>
+                                Watch Our Story
+                            </button>
+                            <button class="px-8 py-4 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2">
+                                <i class="fas fa-heart"></i>
+                                Get Involved
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative" data-aos="fade-left">
+                        <img src="assets/images/education.jpg" alt="Community Impact" 
+                             class="rounded-2xl shadow-2xl w-full object-cover h-[500px]">
+                        <!-- Floating Stats -->
+                        <div class="absolute -bottom-4 -left-4 bg-white p-4 rounded-xl shadow-lg" 
+                             data-aos="fade-up" data-aos-delay="200">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-blue-100 p-3 rounded-full">
+                                    <i class="fas fa-graduation-cap text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold">100+ Students</h3>
+                                    <p class="text-sm text-gray-600">Educated & Empowered</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -top-4 -right-4 bg-white p-4 rounded-xl shadow-lg"
+                             data-aos="fade-up" data-aos-delay="400">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-orange-100 p-3 rounded-full">
+                                    <i class="fas fa-hands-helping text-orange-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold">50+ Communities</h3>
+                                    <p class="text-sm text-gray-600">Positively Impacted</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Impact Stats -->
-        <section class="impact-stats">
-            <div class="stat-card">
-                <h3>100+</h3>
-                <p>Children Educated</p>
-            </div>
-            <div class="stat-card">
-                <h3>50+</h3>
-                <p>Women Empowered</p>
-            </div>
-            <div class="stat-card">
-                <h3>5+</h3>
-                <p>Communities Reached</p>
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl text-center transform hover:-translate-y-2 transition duration-300">
+                            <i class="fas fa-graduation-cap text-4xl text-blue-600 mb-4"></i>
+                            <div class="text-4xl font-bold text-blue-600 mb-2">100+</div>
+                            <div class="text-gray-700">Students Educated</div>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl text-center transform hover:-translate-y-2 transition duration-300">
+                            <i class="fas fa-hands-helping text-4xl text-orange-600 mb-4"></i>
+                            <div class="text-4xl font-bold text-orange-600 mb-2">50+</div>
+                            <div class="text-gray-700">Communities Reached</div>
+                        </div>
+                    </div>
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl text-center transform hover:-translate-y-2 transition duration-300">
+                            <i class="fas fa-heart text-4xl text-green-600 mb-4"></i>
+                            <div class="text-4xl font-bold text-green-600 mb-2">1000+</div>
+                            <div class="text-gray-700">Lives Impacted</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Ways to Help -->
-        <section class="ways-to-help">
-            <div class="help-card donate">
-                <div class="icon">💝</div>
-                <h3>Donate Now</h3>
-                <p>Your financial contribution can make a real difference. Every dollar you donate goes directly toward our projects.</p>
-                <button>Get Started →</button>
-            </div>
-            <div class="help-card volunteer">
-                <div class="icon">🤝</div>
-                <h3>Become a Volunteer</h3>
-                <p>Join our team of dedicated volunteers and actively participate in our projects and events. Your time and skills are invaluable.</p>
-                <button>Get Started →</button>
+        <!-- Programs Section -->
+        <section class="py-20 bg-gray-50" id="programs">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl lg:text-4xl font-bold text-center mb-4" data-aos="fade-up">Our Programs</h2>
+                <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up">
+                    Discover how we're making a difference through our innovative programs
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Education Program -->
+                    <div class="program-card group" data-aos="fade-up" data-aos-delay="0">
+                        <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-graduation-cap text-2xl text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Education First</h3>
+                            <p class="text-gray-600 mb-6">Providing quality education and resources to underprivileged children.</p>
+                            <a href="#" class="text-blue-600 flex items-center gap-2 group-hover:gap-3 transition-all">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Community Development -->
+                    <div class="program-card group" data-aos="fade-up" data-aos-delay="100">
+                        <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-hands-helping text-2xl text-orange-600"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Community Development</h3>
+                            <p class="text-gray-600 mb-6">Building stronger communities through sustainable development initiatives.</p>
+                            <a href="#" class="text-orange-600 flex items-center gap-2 group-hover:gap-3 transition-all">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Women Empowerment -->
+                    <div class="program-card group" data-aos="fade-up" data-aos-delay="200">
+                        <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-female text-2xl text-pink-600"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Women Empowerment</h3>
+                            <p class="text-gray-600 mb-6">Empowering women through skills training and economic opportunities.</p>
+                            <a href="#" class="text-pink-600 flex items-center gap-2 group-hover:gap-3 transition-all">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Sign Up Modal -->
-        <div id="signupModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Join Our Community</h2>
-                <form id="signupForm">
-                    <div class="form-group">
-                        <input type="text" id="fullName" required placeholder=" ">
-                        <label for="fullName">Full Name</label>
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative" data-aos="fade-right">
+                        <img src="assets/images/economic.jpg" alt="Our Mission" class="rounded-2xl shadow-2xl">
+                        <div class="absolute -bottom-6 -right-6 bg-blue-600 text-white p-6 rounded-2xl shadow-xl max-w-xs">
+                            <p class="text-lg font-semibold">"Every child deserves a chance to shine"</p>
+                            <p class="text-sm mt-2">- Monique Richards, Founder</p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" id="signupEmail" required placeholder=" ">
-                        <label for="signupEmail">Email Address</label>
+                    <div data-aos="fade-left">
+                        <h2 class="text-3xl lg:text-4xl font-bold mb-6">Our Story</h2>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            The Monique Richards Foundation was born from a simple yet powerful vision: to create lasting positive change in communities through education and empowerment.
+                        </p>
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-heart text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold mb-1">Our Mission</h3>
+                                    <p class="text-gray-600">To empower communities through education and sustainable development.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-eye text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold mb-1">Our Vision</h3>
+                                    <p class="text-gray-600">A world where every individual has the opportunity to reach their full potential.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="px-8 py-4 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2">
+                            <i class="fas fa-users"></i>
+                            Join Our Mission
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <input type="password" id="signupPassword" required placeholder=" " minlength="6">
-                        <label for="signupPassword">Password</label>
-                        <i class="fas fa-eye-slash password-toggle" onclick="togglePassword('signupPassword')"></i>
-                    </div>
-                    <button type="submit">Sign Up</button>
-                    
-                    <div class="divider">
-                        <span>or</span>
-                    </div>
-                    
-                    <button type="button" id="googleSignup" class="google-btn">
-                        <img src="../assets/images/google-icon.svg" alt="Google">
-                        Continue with Google
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="py-20 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-6" data-aos="fade-up">Ready to Make a Difference?</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                    Join our community of changemakers and help us create lasting impact in communities.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="200">
+                    <button class="signup-btn px-8 py-4 rounded-full bg-white text-blue-600 hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 justify-center">
+                        <i class="fas fa-user-plus"></i>
+                        Join Now
                     </button>
-                    
-                    <p class="form-footer">
-                        Already have an account? <a href="#" class="switch-to-login">Login</a>
-                    </p>
-                </form>
+                    <button class="px-8 py-4 rounded-full border-2 border-white text-white hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 justify-center">
+                        <i class="fas fa-heart"></i>
+                        Donate
+                    </button>
+                </div>
             </div>
-        </div>
+        </section>
 
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl lg:text-4xl font-bold text-center mb-4" data-aos="fade-up">Get in Touch</h2>
+                <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up">
+                    Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+                </p>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-6" data-aos="fade-right">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1">Location</h3>
+                                <p class="text-gray-600">123 Community Street, City, Country</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1">Email</h3>
+                                <p class="text-gray-600">info@moniquefoundation.org</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1">Phone</h3>
+                                <p class="text-gray-600">+1 234 567 890</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="space-y-6" data-aos="fade-left">
+                        <div>
+                            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all">
+                        </div>
+                        <div>
+                            <textarea rows="4" placeholder="Your Message" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-8 py-4 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 justify-center">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-12">
+            <div class="container mx-auto px-4">
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">About Us</h3>
+                        <p class="text-gray-400">Empowering communities through education and sustainable development.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-white transition">About</a></li>
+                            <li><a href="#programs" class="text-gray-400 hover:text-white transition">Programs</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Connect</h3>
+                        <div class="flex gap-4">
+                            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-400 transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Newsletter</h3>
+                        <form class="flex gap-2">
+                            <input type="email" placeholder="Your email" class="px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all">
+                            <button type="submit" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 transition">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                    <p>&copy; 2024 Monique Richards Foundation. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Keep your existing modals -->
         <!-- Login Modal -->
-        <div id="loginModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Welcome Back</h2>
-                <form id="loginForm">
-                    <div class="form-group">
-                        <input type="email" id="loginEmail" required placeholder=" ">
-                        <label for="loginEmail">Email Address</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" id="loginPassword" required placeholder=" ">
-                        <label for="loginPassword">Password</label>
-                        <i class="fas fa-eye-slash password-toggle" onclick="togglePassword('loginPassword')"></i>
-                    </div>
-                    <div class="forgot-password">
-                        <a href="#" id="forgotPassword">Forgot Password?</a>
-                    </div>
-                    <button type="submit">Login</button>
-                    
-                    <div class="divider">
-                        <span>or</span>
-                    </div>
-                    
-                    <button type="button" id="googleLogin" class="google-btn">
-                        <img src="../assets/images/google-icon.svg" alt="Google">
-                        Continue with Google
-                    </button>
-                    
-                    <p class="form-footer">
-                        Don't have an account? <a href="#" class="switch-to-signup">Sign Up</a>
-                    </p>
-                </form>
-            </div>
-        </div>
-
-        <!-- Add Reset Password Modal -->
-        <div id="resetPasswordModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Reset Password</h2>
-                <p class="reset-instructions">Enter your email address and we'll send you a link to reset your password.</p>
-                <form id="resetPasswordForm">
-                    <div class="form-group">
-                        <input type="email" id="resetEmail" required placeholder=" ">
-                        <label for="resetEmail">Email Address</label>
-                    </div>
-                    <button type="submit">Send Reset Link</button>
-                    <p class="form-footer">
-                        <a href="#" class="back-to-login">Back to Login</a>
-                    </p>
-                </form>
-            </div>
-        </div>
+        <!-- Signup Modal -->
+        <!-- Reset Password Modal -->
     </main>
-    <script src="../scripts/auth.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Mobile menu functionality
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+
+        function closeMenuAndRestoreScroll() {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenu.addEventListener('click', closeMenuAndRestoreScroll);
+
+        // Close menu when clicking any link or button
+        const menuLinks = mobileMenu.querySelectorAll('a, button');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', closeMenuAndRestoreScroll);
+        });
+
+        // Close menu on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+                closeMenuAndRestoreScroll();
+            }
+        });
+    </script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/authGuard.js"></script>
 </body>
 </html> 
