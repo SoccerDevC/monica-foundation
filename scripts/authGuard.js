@@ -8,7 +8,9 @@ function checkAuth() {
         '/pages/landing.html',
         '/landing.html',
         '/pages/login.html',
-        '/pages/signup.html'
+        '/pages/signup.html',
+        '/index.html',
+        '/'
     ];
     
     // Check if current page is public
@@ -20,8 +22,9 @@ function checkAuth() {
         return false;
     }
     
-    if (user && isPublicPage) {
-        // If user is authenticated and trying to access login/signup pages
+    if (user && isPublicPage && !currentPath.includes('index.html') && currentPath !== '/') {
+        // Only redirect to index if user is authenticated and on a public page
+        // that isn't index itself
         window.location.href = '/index.html';
         return false;
     }
@@ -33,4 +36,10 @@ function checkAuth() {
 document.addEventListener('DOMContentLoaded', checkAuth);
 
 // Export for use in other files
-window.checkAuth = checkAuth; 
+window.checkAuth = checkAuth;
+
+// Option 2: Add a check for the current page
+if (!window.location.pathname.includes('landing.html')) {
+    // Only redirect if not already on landing page
+    // Your existing redirect logic here
+} 
