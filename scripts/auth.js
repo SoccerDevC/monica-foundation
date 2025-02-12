@@ -15,6 +15,16 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 const analytics = firebase.analytics();
 
+// Enable offline persistence
+db.enablePersistence()
+    .catch((err) => {
+        if (err.code == 'failed-precondition') {
+            console.log('Multiple tabs open, persistence can only be enabled in one tab at a time.');
+        } else if (err.code == 'unimplemented') {
+            console.log('The current browser does not support persistence.');
+        }
+    });
+
 // Debug logs
 console.log('Firebase initialized');
 
@@ -145,34 +155,84 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle login
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        console.log('Login form submitted');
-
         const email = document.getElementById('loginEmail').value;
         const password = document.getElementById('loginPassword').value;
 
         try {
-            console.log('Signing in user:', email);
+            // First authenticate the user
             const userCredential = await auth.signInWithEmailAndPassword(email, password);
             
-            console.log('User signed in:', userCredential.user.uid);
-            const userDoc = await db.collection('users').doc(userCredential.user.uid).get();
-            const userData = userDoc.data();
-
-            localStorage.setItem('user', JSON.stringify({
-                uid: userCredential.user.uid,
-                email: email,
-                fullName: userData.fullName
-            }));
-
-            showNotification('Login successful!', 'success');
-            
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 1500);
-
+            try {
+                // Then try to get user data
+                const userDoc = await db.collection('users').doc(userCredential.user.uid).get();
+                
+                if (userDoc.exists) {
+                    const userData = userDoc.data();
+                    localStorage.setItem('user', JSON.stringify({
+                        uid: userCredential.user.uid,
+                        email: email,
+                        fullName: userData.fullName
+                    }));
+                    
+                    showNotification('Login successful!', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+                } else {
+                    // If user auth exists but no Firestore document, create one
+                    await db.collection('users').doc(userCredential.user.uid).set({
+                        email: email,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    
+                    localStorage.setItem('user', JSON.stringify({
+                        uid: userCredential.user.uid,
+                        email: email
+                    }));
+                    
+                    showNotification('Login successful!', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1500);
+                }
+            } catch (firestoreError) {
+                // If Firestore is offline but authentication succeeded
+                console.log('Firestore error:', firestoreError);
+                localStorage.setItem('user', JSON.stringify({
+                    uid: userCredential.user.uid,
+                    email: email
+                }));
+                
+                showNotification('Login successful! Some user data may be unavailable offline.', 'success');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            }
         } catch (error) {
             console.error('Login error:', error);
-            showNotification(error.message, 'error');
+            let errorMessage = 'An error occurred during login';
+            
+            switch (error.code) {
+                case 'auth/user-not-found':
+                    errorMessage = 'No account found with this email';
+                    break;
+                case 'auth/wrong-password':
+                    errorMessage = 'Incorrect password';
+                    break;
+                case 'auth/invalid-email':
+                    errorMessage = 'Invalid email address';
+                    break;
+                case 'auth/user-disabled':
+                    errorMessage = 'This account has been disabled';
+                    break;
+                case 'auth/too-many-requests':
+                    errorMessage = 'Too many failed attempts. Please try again later';
+                    break;
+                default:
+                    errorMessage = error.message;
+            }
+            
+            showNotification(errorMessage, 'error');
         }
     });
 
