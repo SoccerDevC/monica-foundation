@@ -61,7 +61,7 @@ async function signInWithGoogle() {
         }));
 
         setTimeout(() => {
-            window.location.href = 'index.html';
+            window.location.href = '/pages/index.html';
         }, 1500);
 
     } catch (error) {
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }));
 
             setTimeout(() => {
-                window.location.href = 'index.html';
+                window.location.href = '/pages/home.html';
             }, 1500);
 
         } catch (error) {
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     showNotification('Login successful!', 'success');
                     setTimeout(() => {
-                        window.location.href = 'index.html';
+                        window.location.href = '/pages/home.html';
                     }, 1500);
                 } else {
                     // If user auth exists but no Firestore document, create one
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     showNotification('Login successful!', 'success');
                     setTimeout(() => {
-                        window.location.href = 'index.html';
+                        window.location.href = '/pages/home.html';
                     }, 1500);
                 }
             } catch (firestoreError) {
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 showNotification('Login successful! Some user data may be unavailable offline.', 'success');
                 setTimeout(() => {
-                    window.location.href = 'index.html';
+                    window.location.href = '/pages/home.html';
                 }, 1500);
             }
         } catch (error) {

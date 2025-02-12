@@ -1,0 +1,7 @@
+{
+  "routes": [
+    { "src": "/", "dest": "/pages/landing.html" },
+    { "src": "/index.html", "dest": "/pages/landing.html" }
+  ],
+  "cleanUrls": true
+} 
