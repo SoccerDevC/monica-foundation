@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }));
 
             setTimeout(() => {
-                window.location.href = '/pages/home.html';
+                window.location.href = '/pages/index.html';
             }, 1500);
 
         } catch (error) {
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     showNotification('Login successful!', 'success');
                     setTimeout(() => {
-                        window.location.href = '/pages/home.html';
+                        window.location.href = '../index.html';
                     }, 1500);
                 } else {
                     // If user auth exists but no Firestore document, create one
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     showNotification('Login successful!', 'success');
                     setTimeout(() => {
-                        window.location.href = '/pages/home.html';
+                        window.location.href = '../index.html';
                     }, 1500);
                 }
             } catch (firestoreError) {
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 showNotification('Login successful! Some user data may be unavailable offline.', 'success');
                 setTimeout(() => {
-                    window.location.href = '/pages/home.html';
+                    window.location.href = '../index.html';
                 }, 1500);
             }
         } catch (error) {
@@ -325,4 +325,18 @@ switch (error.code) {
     case 'auth/popup-blocked':
         errorMessage = 'Pop-up was blocked by your browser. Please allow pop-ups for this site.';
         break;
-} 
+}
+
+// Add this to your existing auth.js
+function logout() {
+    firebase.auth().signOut().then(() => {
+        localStorage.removeItem('user');
+        window.location.href = '/pages/landing.html';
+    }).catch((error) => {
+        console.error('Logout error:', error);
+        showNotification('Error logging out', 'error');
+    });
+}
+
+// Export for use in other files
+window.logout = logout; 

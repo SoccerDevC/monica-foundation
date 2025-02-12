@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monique Richards Foundation - Empowering Women and Children</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Our Impact - Monique Richards Foundation</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/impact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/preloader.css">
-
-    <script src="scripts/header.js" defer></script>
-    <style>
-        body { font-family: 'Poppins', sans-serif; }
-    </style></head>
+    <link rel="stylesheet" href="../styles/header.css">
+    <script src="../scripts/header.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
 <body>
-    <header class="header content-hidden">
+    <header class="header">
         <nav class="nav-container">
             <div class="logo">
                 <a href="/">
@@ -54,18 +50,18 @@
             </div>
             <div class="nav-links">
                 <ul>
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="pages/about.html" class="nav-link">About Us</a></li>
-                    <li><a href="pages/impact.html" class="nav-link">Our Impact</a></li>
-                    <li><a href="pages/education-fund.html" class="nav-link">Education Fund</a></li>
-                    <li><a href="pages/shop.html" class="nav-link">Shop</a></li>
-                    <li><a href="pages/blog.html" class="nav-link">Blog</a></li>
-                    <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="landing.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="impact.html" class="nav-link">Our Impact</a></li>
+                    <li><a href="education-fund.html" class="nav-link">Education Fund</a></li>
+                    <li><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </div>
             <div class="cta-buttons">
-                <a href="pages/donate.html" class="btn btn-primary">Donate</a>
-                <a href="pages/shop.html" class="btn btn-secondary">Shop</a>
+                <a href="donate.html" class="btn btn-primary">Donate</a>
+                <a href="shop.html" class="btn btn-secondary">Shop</a>
             </div>
             <button class="mobile-menu-toggle" aria-label="Toggle Menu">
                 <span></span>
@@ -74,68 +70,165 @@
             </button>
         </nav>
     </header>
-
-    <main class="content-hidden">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content animate-on-scroll">
-                <h1>Empowering Women and Children Through Education</h1>
-                <p>Supporting sustainable education and economic independence in communities</p>
-                <div class="hero-cta">
-                    <a href="../pages/donate.html" class="btn btn-primary">Make a Difference</a>
-                    <a href="../pages/about.html" class="btn btn-secondary">Learn More</a>
-                </div>
-            </div>
-            <div class="hero-image animate-on-scroll parallax" data-speed="0.5">
-                <img src="assets/images/hero-image.jpg" alt="Women crafting paper beads">
-            </div>
-        </section>
-
-        <!-- Impact Stats -->
-        <section class="impact-stats">
-            <div class="stat-container">
-                <div class="stat-item animate-on-scroll">
-                    <h3>100+</h3>
-                    <p>Children Sponsored</p>
-                </div>
-                <div class="stat-item animate-on-scroll">
-                    <h3>50+</h3>
-                    <p>Women Empowered</p>
-                </div>
-                <div class="stat-item animate-on-scroll">
-                    <h3>3</h3>
-                    <p>Community Projects</p>
+    <main>
+        <!-- Impact Hero -->
+        <section class="impact-hero">
+            <div class="container">
+                <h1>Our Impact</h1>
+                <p>Transforming lives through education and economic empowerment</p>
+                <div class="impact-numbers">
+                    <div class="impact-stat">
+                        <div class="stat-number" data-target="100">0</div>
+                        <p>Children's Education Sponsored</p>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-number" data-target="50">0</div>
+                        <p>Women Entrepreneurs Supported</p>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-number" data-target="25">0</div>
+                        <p>Homes Renovated</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Featured Programs -->
-        <section class="featured-programs">
-            <h2 class="animate-on-scroll">Our Programs</h2>
-            <div class="program-grid">
-                <div class="program-card animate-on-scroll parallax" data-speed="0.2">
-                    <img src="assets/images/education.jpg" alt="Education Program">
-                    <h3>Education</h3>
-                    <p>Sponsoring children's education and ensuring access to quality learning opportunities.</p>
-                    <a href="/programs/education" class="btn btn-text">Learn More →</a>
+        <!-- Timeline Section -->
+        <section class="timeline-section">
+            <div class="container">
+                <h2>Our Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2019</h3>
+                            <p>Foundation established by Monique Richards after a life-changing encounter during a tour guide experience</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2020</h3>
+                            <p>Launched paper bead crafting initiative, empowering local women with sustainable income opportunities</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2021</h3>
+                            <p>Reached milestone of supporting 50 children's education</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2025</h3>
+                            <p>Launched support program in Buddo community, sponsoring 3 children's education and scholastic materials with generous support from Kamila</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2023</h3>
+                            <p>Celebrated 100 children sponsored and 25 homes renovated through our programs</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="program-card animate-on-scroll parallax" data-speed="0.2">
-                    <img src="assets/images/economic.jpg" alt="Economic Empowerment">
-                    <h3>Economic Empowerment</h3>
-                    <p>Supporting women's groups in marketing their unique crafts and building sustainable businesses.</p>
-                    <a href="/programs/economic" class="btn btn-text">Learn More →</a>
+            </div>
+        </section>
+
+        <!-- Success Stories Grid -->
+        <section class="success-stories">
+            <div class="container">
+                <h2>Stories of Change</h2>
+                <div class="stories-grid">
+                    <div class="story-card">
+                        <div class="story-image">
+                            <img src="../assets/images/economic.jpg" alt="Success Story 1">
+                        </div>
+                        <div class="story-content">
+                            <span class="story-category">Education</span>
+                            <h3>From Dreams to Reality</h3>
+                            <p>Maria's journey from struggling student to university scholarship recipient</p>
+                            <button class="read-more" data-story="1">Read More</button>
+                        </div>
+                    </div>
+                    <!-- More story cards -->
                 </div>
-                <div class="program-card animate-on-scroll parallax" data-speed="0.2">
-                    <img src="assets/images/community.jpg" alt="Community Support">
-                    <h3>Community Support</h3>
-                    <p>Launching initiatives to strengthen communities and provide essential resources.</p>
-                    <a href="/programs/community" class="btn btn-text">Learn More →</a>
+            </div>
+        </section>
+
+        <!-- Impact Map -->
+        <section class="impact-map">
+            <div class="container">
+                <h2>Where We Work</h2>
+                <div class="map-container">
+                    <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.704679719937!2d32.4752232!3d0.2760126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177da3a6038653f9%3A0x3d7a37a65add3799!2sNabbingo!5e0!3m2!1sen!2sug!4v1676961268712!5m2!1sen!2sug" 
+                    frameborder="0" 
+                    style="border:0; width: 100%; height: 270px;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>                    <div class="map-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot education"></span>
+                            <p>Education Programs</p>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot crafts"></span>
+                            <p>Craft Centers</p>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot community"></span>
+                            <p>Community Projects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="container">
+                <h2>Voices of Impact</h2>
+                <div class="testimonials-slider">
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="../assets/images/photo2.jpeg" alt="Community Member">
+                        </div>
+                        <blockquote>
+                            "The foundation's support has not only helped my children attend school but has also given me the skills to build a sustainable business through paper bead crafting."
+                        </blockquote>
+                        <cite>- Sarah M., Community Member</cite>
+                    </div>
+                    <!-- More testimonial cards -->
+                </div>
+                <div class="slider-controls">
+                    <button class="prev-testimonial"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next-testimonial"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Reports -->
+        <section class="impact-reports">
+            <div class="container">
+                <h2>Annual Impact Reports</h2>
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <i class="fas fa-file-pdf"></i>
+                        <h3>2023 Impact Report</h3>
+                        <p>Detailed overview of our achievements and community impact</p>
+                        <a href="#" class="download-btn">Download PDF</a>
+                    </div>
+                    <!-- More report cards -->
                 </div>
             </div>
         </section>
     </main>
-
-    <footer class="bg-gray-900 text-gray-300 py-12 content-hidden">
+    <!-- Footer will be the same as index.html -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <!-- About Section -->
@@ -219,12 +312,7 @@
             </div>
         </div>
     </footer>
-
-    <script src="scripts/preloader.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const preloader = new SitePreloader();
-        });
-    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script src="../js/impact.js"></script>
 </body>
 </html> 
