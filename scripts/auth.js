@@ -63,7 +63,7 @@ async function signInWithGoogle() {
         showNotification('Successfully signed in with Google!', 'success');
         
         setTimeout(() => {
-            window.location.href = '/pages/index.html';
+            window.location.href = '/pages/landing.html';
         }, 1500);
 
     } catch (error) {
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }));
 
             setTimeout(() => {
-                window.location.href = '/pages/index.html';
+                window.location.href = '/pages/landing.html';
             }, 1500);
 
         } catch (error) {
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showNotification('Login successful!', 'success');
             
             setTimeout(() => {
-                window.location.href = '/pages/index.html';
+                window.location.href = '/pages/landing.html';
             }, 1500);
 
         } catch (error) {
