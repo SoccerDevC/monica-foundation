@@ -11,7 +11,7 @@ class SitePreloader {
             <div class="preloader-content">
                 <div id="founder-section" class="founder-section">
                     <div class="foundation-image">
-                        <img src="assets/images/founder.jpg" alt="Foundation" class="foundation-logo">
+                        <img src="../assets/images/founder.jpg" alt="Foundation" class="foundation-logo">
                     </div>
                     <div class="loading-text">
                         <span>M</span><span>O</span><span>N</span><span>I</span><span>Q</span><span>U</span><span>E</span>
@@ -42,9 +42,9 @@ class SitePreloader {
 
     sequenceImages() {
         const sequences = [
-            { image: 'assets/images/education.jpg', text: 'Empowering Communities' },
-            { image: 'assets/images/economic.jpg', text: 'Connecting Lives' },
-            { image: 'assets/images/community.jpg', text: 'Building Futures' }
+            { image: '../assets/images/education.jpg', text: 'Empowering Communities' },
+            { image: '../assets/images/economic.jpg', text: 'Connecting Lives' },
+            { image: '../assets/images/community.jpg', text: 'Building Futures' }
         ];
 
         setTimeout(() => {
