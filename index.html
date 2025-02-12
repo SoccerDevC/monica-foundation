@@ -78,20 +78,20 @@
                 <div class="container mx-auto h-full flex flex-col">
                     <!-- Close button -->
                     <div class="flex justify-end pt-6 px-4">
-                        <button id="closeMenu" class="text-white hover:text-blue-400 transition-colors">
+                        <button id="closeMenu" class="text-blue-500 hover:text-blue-400 transition-colors">
                             <i class="fas fa-times text-2xl"></i>
                         </button>
                     </div>
 
                     <!-- Menu items - centered in remaining space -->
                     <div class="flex-1 flex flex-col items-center justify-center gap-8 px-4">
-                        <a href="#about" class="text-2xl text-white hover:text-blue-400 transition-colors">About Us</a>
-                        <a href="#impact" class="text-2xl text-white hover:text-blue-400 transition-colors">Our Impact</a>
-                        <a href="#programs" class="text-2xl text-white hover:text-blue-400 transition-colors">Programs</a>
-                        <a href="#contact" class="text-2xl text-white hover:text-blue-400 transition-colors">Contact</a>
+                        <a href="#about" class="text-2xl text-blue-500 hover:text-blue-400 transition-colors">About Us</a>
+                        <a href="#impact" class="text-2xl text-blue-500 hover:text-blue-400 transition-colors">Our Impact</a>
+                        <a href="#programs" class="text-2xl text-blue-500 hover:text-blue-400 transition-colors">Programs</a>
+                        <a href="#contact" class="text-2xl text-blue-500 hover:text-blue-400 transition-colors">Contact</a>
                         
                         <div class="w-full max-w-xs pt-8 space-y-4">
-                            <button class="login-btn w-full py-4 rounded-xl bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-all duration-300">
+                            <button class="login-btn w-full py-4 rounded-xl bg-blue-600/20 text-blue-500 border border-blue-500/20 hover:bg-blue-600/30 transition-all duration-300">
                                 <i class="fas fa-user mr-2"></i>Login
                             </button>
                             <button class="signup-btn w-full py-4 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300">
@@ -432,15 +432,18 @@
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         const closeMenu = document.getElementById('closeMenu');
+        const mainDoc = document.documentElement; // Get the root HTML element
 
         function closeMenuAndRestoreScroll() {
             mobileMenu.classList.add('hidden');
             document.body.style.overflow = '';
+            mainDoc.style.backgroundColor = ''; // Reset background color
         }
 
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
+            mainDoc.style.backgroundColor = 'black'; // Set background to black
         });
 
         closeMenu.addEventListener('click', closeMenuAndRestoreScroll);
